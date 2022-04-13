@@ -1,0 +1,51 @@
+<hr/>
+<div class="container">
+  <div class="panel panel-primary">
+    <h2 style="text-align: center;font-family: 'Courier New', Courier, monospace;font-size: 30px;background-color: blue;color:white;">EMPLOYEE MANAGEMENT SYSTEM</h2>
+    
+    <div class="panel-body">
+      <form #myform="ngForm">
+  
+          <div class="form-group">
+              <label for="eid">EID</label>
+              <input type="text" #n1="ngModel" class="form-control" id="eid"  ngModel name="eid" required>
+              <div *ngIf="n1.touched && n1.invalid">
+                  <small *ngIf="n1.errors.required" class="error">*EID IS REQUIRED</small>
+                  
+              </div>
+             
+            </div>
+        <div class="form-group">
+          <label for="ename">ENAME</label>
+          <input type="text" #n2="ngModel" class="form-control" id="ename"   ngModel name="ename" required minlength="8" pattern="[a-zA-Z]+">
+          <div *ngIf="n2.touched && n2.invalid">
+              <small *ngIf="n2.errors.required" class="error">*ENAME IS REQUIRED</small>
+              <small *ngIf="n2.errors.pattern" class="error">*ONLY  ALPHAETS ARE REQUIRED</small>
+              <small *ngIf="n2.errors.minlength" class="error">*MINIMUM 8 CHARACTERS IS REQUIRED</small>
+
+          </div>
+         
+        </div>
+        <div class="form-group">
+            <label for="esalary">ESALARY</label>
+            <input type="text" #n3="ngModel" class="form-control" id="esalary" ngModel name="esalary" required>
+            <div *ngIf="n3.touched && n3.invalid">
+                <small *ngIf="n3.errors.required" class="error">*ESALARY IS REQUIRED</small>
+                
+            </div>
+           
+          </div>
+        <input type="submit" class="btn btn-primary" [disabled]="myform.invalid" value="STORE" (click)="storeD(myform)">
+        
+      
+      </form>
+
+    </div>
+     
+
+    {{msg}}
+<hr/>
+<br/>
+
+
+    <app-employeelist></app-employeelist>
